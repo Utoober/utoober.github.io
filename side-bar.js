@@ -1,11 +1,18 @@
-let menuIcon = document.querySelector(".menu-icon");
-let sidebar = document.querySelector(".sidebar");
-let container = document.querySelector(".container");
+document.addEventListener("DOMContentLoaded", function() {
+    const menuIcon = document.querySelector(".menu-icon");
+    const sidebar = document.querySelector(".sidebar");
+    const container = document.querySelector(".container");
 
-// let menuIcon = document.querySelector(".menu-icon")
-
-menuIcon.onclick = function(){
-    sidebar.classList.toggle("small-sidebar");
-    container.classList.toggle("large-container");    
-    
-}
+    menuIcon.onclick = function() {
+        const screenWidth = window.innerWidth;
+        
+        if (screenWidth <= 900) {
+            // Mobile behavior: toggle the full-screen sidebar
+            sidebar.classList.toggle("full-screen-sidebar");
+        } else {
+            // Desktop behavior: toggle small and large sidebar
+            sidebar.classList.toggle("small-sidebar");
+            container.classList.toggle("large-container");
+        }
+    };
+});
